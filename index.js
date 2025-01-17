@@ -1,9 +1,9 @@
-const booksPrices = [25, 15, 30, 50, 45, 20];
+const books = require('./bookList');
 
 let cheaper = 0;
 
-for (let current = 0; current < booksPrices.length; current++) {
-	if (booksPrices[current] < booksPrices[cheaper]) {
+for (let current = 0; current < books.length; current++) {
+	if (books[current].price < books[cheaper].price) {
 		cheaper = current;
 	}
 }

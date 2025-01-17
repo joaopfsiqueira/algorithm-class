@@ -40,3 +40,5 @@ const booksPrice = [
 		price: 1000,
 	},
 ];
+
+module.exports = booksPrice;
