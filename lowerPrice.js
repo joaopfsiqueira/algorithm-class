@@ -1,11 +1,14 @@
 const books = require('./bookList');
 
-let cheaper = 0;
+function lowerPrice(arrProducts, index) {
+	let cheaper = 0;
 
-for (let current = 0; current < books.length; current++) {
-	if (books[current].price < books[cheaper].price) {
-		cheaper = current;
+	for (let current = 0; current < books.length; current++) {
+		if (books[current].price < books[cheaper].price) {
+			cheaper = current;
+		}
 	}
+	return cheaper;
 }
 
-console.log(cheaper); // Output: 1
+module.exports = lowerPrice;
