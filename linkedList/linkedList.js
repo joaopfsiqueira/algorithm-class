@@ -72,7 +72,7 @@ class LinkedList {
     this.length++; // Increment the length of the linked list
     return this; // Return the linked list for chaining
   }
-  
+
   shift() {
     if (!this.head) return undefined; // If the list is empty, return undefined
     const currentHead = this.head; // Store the current head
@@ -115,6 +115,18 @@ class LinkedList {
     prevNode.next = newNode; // Link the previous node to the new node
     this.length++; // Increment the length of the linked list
     return true; // Return true if successful
+  }
+
+  remove(index) {
+    if (index < 0 || index >= this.length) return undefined; // Check for valid index
+    if (index === 0) return this.shift(); // If removing from head, use shift
+    if (index === this.length - 1) return this.pop(); // If removing from tail, use pop
+
+    const prevNode = this.get(index - 1); // Get the previous node
+    const removedNode = prevNode.next; // Store the node to be removed
+    prevNode.next = removedNode.next; // Link the previous node to the next node
+    this.length--; // Decrement the length of the linked list
+    return removedNode; // Return the removed node
   }
 
 }
