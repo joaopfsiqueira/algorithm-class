@@ -85,6 +85,15 @@ class LinkedList {
     return currentHead; // Return the removed head node
   }
 
+  get(index) {
+    if (index < 0 || index >= this.length) return null; // Check for valid index
+    let current = this.head; // Start from the head
+    for (let i = 0; i < index; i++) {
+      current = current.next; // Move to the next node
+    }
+    return current; // Return the node at the specified index
+  }
+
 }
 
 let myLinkedList = new LinkedList(11);
