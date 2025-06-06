@@ -136,7 +136,7 @@ class LinkedList {
     this.tail = current; // Set tail to the current head
     let next; // Initialize next node
     let prev = null; // Initialize previous node to null
-    
+
     for (let i = 0; i < this.length; i++) {
       next = current.next; // Store the next node
       current.next = prev; // Reverse the link
@@ -144,6 +144,18 @@ class LinkedList {
       current = next; // Move current to next
     }
     return this; // Return the reversed linked list
+  }
+
+  findMiddleNode() {
+    if (!this.head) return null; // If the list is empty, return null
+    let slow = this.head; // Initialize slow pointer
+    let fast = this.head; // Initialize fast pointer
+
+    while (fast && fast.next) {
+      slow = slow.next; // Move slow pointer by one step
+      fast = fast.next.next; // Move fast pointer by two steps
+    }
+    return slow; // Return the middle node
   }
 
 }
