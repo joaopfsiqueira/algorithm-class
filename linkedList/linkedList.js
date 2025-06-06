@@ -59,6 +59,20 @@ class LinkedList {
 
     return current; // Return the popped node
   }
+
+  unshift(value) {
+    const newNode = new Node(value);
+    if (!this.head) {
+      this.head = newNode; // If the list is empty, set head to new node
+      this.tail = newNode; // Set tail to new node
+    } else {
+      newNode.next = this.head; // Link the new node to the current head
+      this.head = newNode; // Update head to the new node
+    }
+    this.length++; // Increment the length of the linked list
+    return this; // Return the linked list for chaining
+  }
+
 }
 
 let myLinkedList = new LinkedList(11);
