@@ -132,17 +132,17 @@ class LinkedList {
   reverse() {
     if (!this.head) return this; // If the list is empty, return it
     let current = this.head; // Start from the head
-    this.tail = this.head; // Update tail to the current head
-    let prev = null; // Initialize previous node as null
-
-    while (current) {
-      const nextNode = current.next; // Store the next node
+    this.head = this.tail; // Set head to the tail
+    this.tail = current; // Set tail to the current head
+    let next; // Initialize next node
+    let prev = null; // Initialize previous node to null
+    
+    for (let i = 0; i < this.length; i++) {
+      next = current.next; // Store the next node
       current.next = prev; // Reverse the link
-      prev = current; // Move prev to the current node
-      current = nextNode; // Move to the next node
+      prev = current; // Move prev to current
+      current = next; // Move current to next
     }
-
-    this.head = prev; // Update head to the last processed node
     return this; // Return the reversed linked list
   }
 
