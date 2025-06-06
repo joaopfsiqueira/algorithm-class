@@ -72,6 +72,18 @@ class LinkedList {
     this.length++; // Increment the length of the linked list
     return this; // Return the linked list for chaining
   }
+  shift() {
+    if (!this.head) return undefined; // If the list is empty, return undefined
+    const currentHead = this.head; // Store the current head
+    this.head = this.head.next; // Update head to the next node
+    this.length--; // Decrement the length of the linked list
+
+    if (this.length === 0) {
+      this.tail = null; // If the list is now empty, set tail to null
+    }
+
+    return currentHead; // Return the removed head node
+  }
 
 }
 
