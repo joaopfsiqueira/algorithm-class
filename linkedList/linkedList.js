@@ -129,6 +129,23 @@ class LinkedList {
     return removedNode; // Return the removed node
   }
 
+  reverse() {
+    if (!this.head) return this; // If the list is empty, return it
+    let current = this.head; // Start from the head
+    this.tail = this.head; // Update tail to the current head
+    let prev = null; // Initialize previous node as null
+
+    while (current) {
+      const nextNode = current.next; // Store the next node
+      current.next = prev; // Reverse the link
+      prev = current; // Move prev to the current node
+      current = nextNode; // Move to the next node
+    }
+
+    this.head = prev; // Update head to the last processed node
+    return this; // Return the reversed linked list
+  }
+
 }
 
 let myLinkedList = new LinkedList(11);
