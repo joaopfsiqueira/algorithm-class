@@ -72,6 +72,7 @@ class LinkedList {
     this.length++; // Increment the length of the linked list
     return this; // Return the linked list for chaining
   }
+  
   shift() {
     if (!this.head) return undefined; // If the list is empty, return undefined
     const currentHead = this.head; // Store the current head
@@ -92,6 +93,28 @@ class LinkedList {
       current = current.next; // Move to the next node
     }
     return current; // Return the node at the specified index
+  }
+
+  set(index, value) {
+    const node = this.get(index); // Get the node at the specified index
+    if (node) {
+      node.value = value; // Update the value of the node
+      return true; // Return true if successful
+    }
+    return false; // Return false if the index is invalid
+  }
+
+  insert(index, value) {
+    if (index < 0 || index > this.length) return false; // Check for valid index
+    if (index === 0) return !!this.unshift(value); // If inserting at head, use unshift
+    if (index === this.length) return !!this.push(value); // If inserting at tail, use push
+
+    const newNode = new Node(value); // Create a new node
+    const prevNode = this.get(index - 1); // Get the previous node
+    newNode.next = prevNode.next; // Link the new node to the next node
+    prevNode.next = newNode; // Link the previous node to the new node
+    this.length++; // Increment the length of the linked list
+    return true; // Return true if successful
   }
 
 }
