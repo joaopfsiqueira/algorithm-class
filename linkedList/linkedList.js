@@ -37,8 +37,32 @@ class LinkedList {
     this.length++; // Increment the length of the linked list
     return this; // Return the linked list for chaining
   }
+
+  pop() {
+    if (!this.head) return undefined; // If the list is empty, return undefined
+    let current = this.head; // Start from the head
+    let newTail = current; // Initialize newTail to head
+
+    while (current.next) {
+      newTail = current; // Move newTail to the next node
+      current = current.next; // Move current to the next node
+    }
+
+    this.tail = newTail; // Update tail to the new tail
+    this.tail.next = null; // Set the next of new tail to null
+    this.length--; // Decrement the length of the linked list
+
+    if (this.length === 0) {
+      this.head = null; // If the list is now empty, set head to null
+      this.tail = null; // Set tail to null as well
+    }
+
+    return current; // Return the popped node
+  }
 }
 
 let myLinkedList = new LinkedList(11);
 myLinkedList.push(3);
+myLinkedList.push(4);
+myLinkedList.pop();
 console.log(myLinkedList);
